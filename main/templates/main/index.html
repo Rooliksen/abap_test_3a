@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Weather</title>
+
+</head>
+
+<body>
+    <h4>Прогноз погоды на предстоящие 5 дней (включая текущий)</h4>
+    <p>Введите ширину и долготу (Например для Москвы – Широта: 55,45 Долгота: 37,37):</p>
+    <form method="post" enctype="multipart/form-data" autocomplete="off">
+        {% csrf_token %}
+        <div class="row">
+          <div class="mb-3">
+            <div class="d-flex justify-content-center mb-2">
+              {{ form.city_name.label }}
+            </div>
+              <p>Широта: {{ form.lat }}</p>
+              <p>Долгота: {{ form.lon }}</p>
+          </div>
+        </div><br>
+        <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-success btn-sm mb-2 fw-normal">Сохранить</button>
+      </div>
+    </form>
+    <h3>Результаты</h3>
+    <div>
+      День с минимальной разницей между ночной и утренней температурой: {{ weather_data.min_temp_delta_day }}
+    </div>
+    <div>
+      Максимальное давление за предстоящие 5 дней: {{ weather_data.max_pressure }} hPa
+    </div>
+    <div>
+      Минимальная разница температур в этот день: {{ weather_data.min_temp_delta_value }} <sup>o</sup>C
+    </div>
+    <div>
+      <h4>День 1</h4>
+      <p>{{ weather_data.day1_dt }}</p>
+      <p>Температура, день: {{ weather_data.day1_temp_current }} <sup>o</sup>C</p>
+      <p>Давление: {{ weather_data.day1_press_current }} hPa</p>
+      <p>Температура, утро: {{ weather_data.day1_temp_morn }} <sup>o</sup>C</p>
+      <p>Температура, ночь: {{ weather_data.day1_temp_night }} <sup>o</sup>C</p>
+      <p>Разница между ночной и утренней температурой: {{ weather_data.day1_delta }} <sup>o</sup>C</p>
+    </div>
+    <div>
+      <h4>День 2</h4>
+      <p>{{ weather_data.day2_dt }}</p>
+      <p>Температура дневная: {{ weather_data.day2_temp_current }} <sup>o</sup>C</p>
+      <p>Давление: {{ weather_data.day2_press_current }} hPa</p>
+      <p>Температура, утро: {{ weather_data.day2_temp_morn }} <sup>o</sup>C</p>
+      <p>Температура, ночь: {{ weather_data.day2_temp_night }} <sup>o</sup>C</p>
+      <p>Разница между ночной и утренней температурой: {{ weather_data.day2_delta }} <sup>o</sup>C</p>
+    </div>
+    <div>
+      <h4>День 3</h4>
+      <p>{{ weather_data.day3_dt }}</p>
+      <p>Температура дневная: {{ weather_data.day3_temp_current }} <sup>o</sup>C</p>
+      <p>Давление: {{ weather_data.day3_press_current }} hPa</p>
+      <p>Температура, утро: {{ weather_data.day3_temp_morn }} <sup>o</sup>C</p>
+      <p>Температура, ночь: {{ weather_data.day3_temp_night }} <sup>o</sup>C</p>
+      <p>Разница между ночной и утренней температурой: {{ weather_data.day3_delta }} <sup>o</sup>C</p>
+    </div>
+    <div>
+      <h4>День 4</h4>
+      <p>{{ weather_data.day4_dt }}</p>
+      <p>Температура дневная: {{ weather_data.day4_temp_current }} <sup>o</sup>C</p>
+      <p>Давление: {{ weather_data.day4_press_current }} hPa</p>
+      <p>Температура, утро: {{ weather_data.day4_temp_morn }} <sup>o</sup>C</p>
+      <p>Температура, ночь: {{ weather_data.day4_temp_night }} <sup>o</sup>C</p>
+      <p>Разница между ночной и утренней температурой: {{ weather_data.day4_delta }} <sup>o</sup>C</p>
+    </div>
+    <div>
+      <h4>День 5</h4>
+      <p>{{ weather_data.day5_dt }}</p>
+      <p>Температура дневная: {{ weather_data.day5_temp_current }} <sup>o</sup>C</p>
+      <p>Давление: {{ weather_data.day5_press_current }} hPa</p>
+      <p>Температура, утро: {{ weather_data.day5_temp_morn }} <sup>o</sup>C</p>
+      <p>Температура, ночь: {{ weather_data.day5_temp_night }} <sup>o</sup>C</p>
+      <p>Разница между ночной и утренней температурой: {{ weather_data.day5_delta }} <sup>o</sup>C</p>
+    </div>
+</body>
+
+</html>
